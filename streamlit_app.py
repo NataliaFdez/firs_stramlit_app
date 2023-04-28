@@ -1,3 +1,4 @@
+# Importamos stramlit, creamos el título, la cabecera y los textos
 import streamlit
 
 streamlit.title('My Parents New Healthy Dinner')
@@ -9,3 +10,10 @@ streamlit.text('🥗 Hard-Boiled Free-Range Egg')
 streamlit.text('🥑🍞 Avocado Toast')
 
 streamlit.header('🍌🥭 Build Your Own Fruit Smoothie 🥝🍇')
+
+
+# Importamos pandas y añadimos la lista
+import pandas
+
+my_fruit_list = pandas.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt")
+stramlit.dataframe(my_fruit_list)
