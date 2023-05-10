@@ -1,6 +1,11 @@
-# Importamos stramlit, creamos el título, la cabecera y los textos
 import streamlit
+import pandas
+import requests
+import snowflake.connector
+from urllib.error import URLError
 
+
+# Ccreamos el título, la cabecera y los textos
 streamlit.title('My Parents New Healthy Dinner')
 
 streamlit.header('Breakfast Menu')
@@ -10,9 +15,7 @@ streamlit.text('🥗 Hard-Boiled Free-Range Egg')
 streamlit.text('🥑🍞 Avocado Toast')
 streamlit.header('🍌🥭 Build Your Own Fruit Smoothie 🥝🍇')
 
-# Importamos pandas y añadimos la lista
-import pandas
-
+# Añadimos la lista
 my_fruit_list = pandas.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt")
 my_fruit_list = my_fruit_list.set_index('Fruit')
 
@@ -23,7 +26,6 @@ fruits_to_show = my_fruit_list.loc[fruits_selected]
 streamlit.dataframe(fruits_to_show)
 
 # #New Sección para mostrar la respuesta de la API de fruityvice
-import requests
 # streamlit.write('Thanks for adding ', fruit_choice)
 def get_fruityvice_data(this_fruit_choice):
     fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
